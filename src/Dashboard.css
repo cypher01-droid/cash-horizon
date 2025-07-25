@@ -1,0 +1,92 @@
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a2e;
+  padding: 1rem 2rem;
+  color: white;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 40px;
+  margin-right: 0.75rem;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav-links button:hover {
+  color: #00bcd4;
+}
+
+/* Layout with Sidebar */
+.dashboard-body {
+  display: flex;
+  flex: 1;
+  background-color: #f4f6f9;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #ffffff;
+  border-right: 1px solid #ddd;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  text-align: left;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar button:hover {
+  background-color: #e0f7fa;
+  color: #007a8c;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  background-color: #f4f6f9;
+}
+
+.dashboard-footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #1a1a2e;
+  color: white;
+  font-size: 0.9rem;
+}

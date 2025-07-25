@@ -1,0 +1,130 @@
+.signup-container {
+    min-height: 100vh;
+    background-color: #f9fafb;
+    font-family: Arial, sans-serif;
+    padding: 2rem;
+    position: relative;
+  }
+  
+  .signup-nav {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #1d4ed8;
+  }
+  
+  .signup-box {
+    display: flex;
+    background-color: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    max-width: 900px;
+    margin: 80px auto 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .signup-left,
+  .signup-right {
+    flex: 1;
+    padding: 3rem 2rem;
+  }
+  
+  .signup-left {
+    background-color: #2563eb;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  
+  .signup-logo {
+    height: 60px;
+    margin-bottom: 1rem;
+  }
+  
+  .signup-left h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .signup-left p {
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+  
+  .signup-right h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: #111827;
+  }
+  
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .signup-form label {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  .signup-form input {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  .signup-form input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+  
+  .terms-container {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+  
+  .terms-container input {
+    margin-right: 0.5rem;
+  }
+  
+  .signup-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  .btn-prev, .btn-next, .btn-submit {
+    padding: 0.75rem;
+    background-color: #10b981;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-prev:hover, .btn-next:hover, .btn-submit:hover {
+    background-color: #059669;
+    transform: scale(1.03);
+  }
+  

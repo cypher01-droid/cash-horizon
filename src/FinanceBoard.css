@@ -1,0 +1,77 @@
+.finance-section {
+    padding: 2rem;
+    background-color: #f3f4f6;
+    min-height: 100vh;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    color: #1f2937;
+    margin-bottom: 2rem;
+  }
+  
+  .sub-title {
+    font-size: 1.3rem;
+    margin: 2rem 0 1rem;
+    color: #374151;
+  }
+  
+  .form-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+  }
+  
+  .form-grid input,
+  .form-grid select {
+    padding: 0.6rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+  }
+  
+  .form-grid button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    grid-column: span 2;
+  }
+  
+  .form-grid button:hover {
+    background-color: #2563eb;
+  }
+  
+  .budget-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background: white;
+    padding: 1.2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+  }
+  
+  .budget-summary p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #111827;
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .chart-container {
+    background: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  

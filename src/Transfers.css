@@ -1,0 +1,90 @@
+.transfer-section {
+    padding: 2rem;
+    background-color: #f9fafb;
+    min-height: 100vh;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    color: #1f2937;
+    margin-bottom: 2rem;
+  }
+  
+  .transfer-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .transfer-buttons button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .transfer-buttons button:hover {
+    background-color: #2563eb;
+  }
+  
+  .transfer-form,
+  .receive-panel {
+    display: grid;
+    gap: 1rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin-bottom: 2rem;
+  }
+  
+  .transfer-form label,
+  .receive-panel label {
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  .transfer-form input,
+  .transfer-form select,
+  .receive-panel select {
+    padding: 0.6rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    width: 100%;
+  }
+  
+  .transfer-form button {
+    background-color: #10b981;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .transfer-form button:hover {
+    background-color: #059669;
+  }
+  
+  .receive-panel p {
+    margin: 0.5rem 0;
+    color: #111827;
+  }
+  
+  .receive-panel span {
+    background-color: #f3f4f6;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    user-select: all;
+  }
+  
+  .receive-panel span:hover {
+    background-color: #e5e7eb;
+  }
+  

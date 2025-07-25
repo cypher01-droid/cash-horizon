@@ -1,0 +1,110 @@
+.transactions-section {
+    padding: 2rem;
+    background-color: #f9fafb;
+    min-height: 100vh;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    color: #1f2937;
+    margin-bottom: 2rem;
+  }
+  
+  .transaction-form {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-bottom: 2rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .transaction-form input,
+  .transaction-form select {
+    padding: 0.6rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+  }
+  
+  .transaction-form button {
+    grid-column: span 2;
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .transaction-form button:hover {
+    background-color: #2563eb;
+  }
+  
+  .filters {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-bottom: 2rem;
+  }
+  
+  .filters input,
+  .filters select {
+    padding: 0.6rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+  }
+  
+  .transaction-list {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .transaction-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 5px solid #10b981;
+  }
+  
+  .transaction-card.depense {
+    border-left-color: #ef4444;
+  }
+  
+  .transaction-card h4 {
+    font-size: 1.1rem;
+    color: #1f2937;
+    margin-bottom: 0.3rem;
+  }
+  
+  .transaction-card .amount {
+    font-weight: bold;
+    color: #1e3a8a;
+  }
+  
+  .transaction-card.depense .amount {
+    color: #b91c1c;
+  }
+  
+  .transaction-card.revenu .amount {
+    color: #047857;
+  }
+  
+  .transaction-card .date {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+  }
+  
+  .empty {
+    color: #6b7280;
+    font-style: italic;
+  }
+  

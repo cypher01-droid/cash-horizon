@@ -1,0 +1,70 @@
+.profile-dashboard {
+  padding: 2rem;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.welcome-text {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #1e293b;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.overview-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.overview-card:hover {
+  transform: translateY(-5px);
+}
+
+.overview-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #0f172a;
+}
+
+.tx-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tx-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.amount {
+  color: #ef4444;
+}
+
+.quick-links button {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.quick-links button:hover {
+  background-color: #2563eb;
+}
