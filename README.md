@@ -1,4 +1,13 @@
-<<<<<<< HEAD
+## 📸 Aperçu de l'application
+
+Voici quelques captures d'écran de l'application **Cash Horizon** :
+
+<img src="./screenshots/Screenshot at 2025-07-25 11-11-57.png" width="600" />
+<img src="./screenshots/Screenshot at 2025-07-25 11-12-18.png" width="600" />
+<img src="./screenshots/Screenshot at 2025-07-25 11-12-36.png" width="600" />
+<img src="./screenshots/Screenshot at 2025-07-25 11-13-12.png" width="600" />
+<img src="./screenshots/Screenshot at 2025-07-25 11-26-05.png" width="600" />
+<img src="./screenshots/Screenshot at 2025-07-25 11-26-21.png" width="600" />
 # cash-horizon
 Cash Horizon est une application bancaire moderne développée avec React, Node.js, et MongoDB, qui allie sécurité, performance, et intelligence artificielle pour offrir une expérience bancaire fluide et intuitive.
 Fonctionnalités principales
