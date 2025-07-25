@@ -39,7 +39,7 @@ const HorizonBot = () => {
       const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer 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',
+          'Authorization': `Bearer ${process.env.REACT_APP_GROQ_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({

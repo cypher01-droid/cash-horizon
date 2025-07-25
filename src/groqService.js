@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const GROQ_API_KEY = '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';
+// Load GROQ API key from .env file
+const GROQ_API_KEY = process.env.REACT_APP_GROQ_API_KEY;
 
 const groqClient = axios.create({
   baseURL: 'https://api.groq.com/openai/v1/chat/completions',
@@ -17,7 +18,7 @@ export const askGROQ = async (message) => {
       messages: [
         {
           role: 'system',
-          content: 'You are a smart financial assistant helping a user manage their banking information.'
+          content: 'Tu es un assistant financier intelligent qui aide les utilisateurs à gérer leurs finances.'
         },
         {
           role: 'user',
