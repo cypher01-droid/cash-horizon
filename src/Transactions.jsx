@@ -1,118 +1,155 @@
-import React, { useState } from 'react';
-import './Transactions.css';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './Transfers.css';
 
-const Transactions = () => {
-  const [transactions, setTransactions] = useState([
-    { id: 1, type: 'Dépense', label: 'Courses', amount: 45.90, date: '2025-07-21' },
-    { id: 2, type: 'Revenu', label: 'Salaire', amount: 1500.00, date: '2025-07-01' },
-    { id: 3, type: 'Dépense', label: 'Électricité', amount: 80.25, date: '2025-07-15' },
-  ]);
+const Transfers = () => {
+  const userId = localStorage.getItem('userId');
+  const userEmail = localStorage.getItem('userEmail');
+  const userPhone = localStorage.getItem('userPhone');
 
-  const [newTx, setNewTx] = useState({ label: '', amount: '', type: '', date: '' });
-  const [filters, setFilters] = useState({ search: '', type: '', min: '', max: '' });
+  const [showSend, setShowSend] = useState(false);
+  const [showReceive, setShowReceive] = useState(false);
 
-  const addTransaction = (e) => {
-    e.preventDefault();
-    const newTransaction = {
-      ...newTx,
-      id: Date.now(),
-      amount: parseFloat(newTx.amount),
+  const [recipient, setRecipient] = useState('');
+  const [amount, setAmount] = useState('');
+  const [accounts, setAccounts] = useState([]);
+  const [selectedAccount, setSelectedAccount] = useState('');
+  const [receiveAccount, setReceiveAccount] = useState('');
+
+  const fakeHistory = [
+    { id: 1, label: 'Envoyé à Amina Diop', amount: 120.00, date: '2025-07-22' },
+    { id: 2, label: 'Reçu de Kwame Mensah', amount: 75.50, date: '2025-07-19' },
+    { id: 3, label: 'Envoyé à Zanele Moyo', amount: 300.00, date: '2025-07-15' },
+  ];
+
+  useEffect(() => {
+    const fetchAccounts = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/api/accounts/${userId}`);
+        setAccounts(res.data);
+      } catch (err) {
+        console.error(err);
+      }
     };
-    setTransactions([newTransaction, ...transactions]);
-    setNewTx({ label: '', amount: '', type: '', date: '' });
+
+    fetchAccounts();
+  }, [userId]);
+
+  const handleSend = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:5000/api/transfer', {
+        senderId: userId,
+        recipient,
+        amount,
+        fromAccountId: selectedAccount,
+      });
+      alert('Transfert réussi');
+      setRecipient('');
+      setAmount('');
+      setSelectedAccount('');
+      setShowSend(false);
+    } catch (err) {
+      console.error(err);
+      alert('Erreur lors du transfert');
+    }
   };
 
-  const filteredTransactions = transactions.filter((tx) => {
-    const matchesSearch = tx.label.toLowerCase().includes(filters.search.toLowerCase());
-    const matchesType = !filters.type || tx.type === filters.type;
-    const matchesMin = !filters.min || tx.amount >= parseFloat(filters.min);
-    const matchesMax = !filters.max || tx.amount <= parseFloat(filters.max);
-    return matchesSearch && matchesType && matchesMin && matchesMax;
-  });
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text);
+    alert('Copié dans le presse-papiers');
+  };
 
   return (
-    <div className="transactions-section">
-      <h2 className="section-title">Historique des Transactions</h2>
+    <div className="transfer-section">
+      <h2 className="section-title">Transferts</h2>
 
-      <form className="transaction-form" onSubmit={addTransaction}>
-        <input
-          type="text"
-          placeholder="Libellé"
-          value={newTx.label}
-          onChange={(e) => setNewTx({ ...newTx, label: e.target.value })}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Montant"
-          value={newTx.amount}
-          onChange={(e) => setNewTx({ ...newTx, amount: e.target.value })}
-          required
-        />
-        <select
-          value={newTx.type}
-          onChange={(e) => setNewTx({ ...newTx, type: e.target.value })}
-          required
+      <div className="transfer-buttons">
+        <button
+          className={`toggle-btn ${showSend ? 'active' : ''}`}
+          onClick={() => { setShowSend(true); setShowReceive(false); }}
         >
-          <option value="">Type</option>
-          <option value="Revenu">Revenu</option>
-          <option value="Dépense">Dépense</option>
-        </select>
-        <input
-          type="date"
-          value={newTx.date}
-          onChange={(e) => setNewTx({ ...newTx, date: e.target.value })}
-          required
-        />
-        <button type="submit">Ajouter</button>
-      </form>
-
-      <div className="filters">
-        <input
-          type="text"
-          placeholder="Rechercher par libellé"
-          value={filters.search}
-          onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-        />
-        <select
-          value={filters.type}
-          onChange={(e) => setFilters({ ...filters, type: e.target.value })}
+          Envoyer
+        </button>
+        <button
+          className={`toggle-btn ${showReceive ? 'active' : ''}`}
+          onClick={() => { setShowReceive(true); setShowSend(false); }}
         >
-          <option value="">Tous les types</option>
-          <option value="Revenu">Revenu</option>
-          <option value="Dépense">Dépense</option>
-        </select>
-        <input
-          type="number"
-          placeholder="Min €"
-          value={filters.min}
-          onChange={(e) => setFilters({ ...filters, min: e.target.value })}
-        />
-        <input
-          type="number"
-          placeholder="Max €"
-          value={filters.max}
-          onChange={(e) => setFilters({ ...filters, max: e.target.value })}
-        />
+          Recevoir
+        </button>
       </div>
 
-      <div className="transaction-list">
-        {filteredTransactions.length === 0 ? (
-          <p className="empty">Aucune transaction trouvée.</p>
-        ) : (
-          filteredTransactions.map((tx) => (
-            <div key={tx.id} className={`transaction-card ${tx.type === 'Dépense' ? 'depense' : 'revenu'}`}>
-              <h4>{tx.label}</h4>
-              <p className="amount">
-                {tx.type === 'Dépense' ? '-' : '+'} €{tx.amount.toFixed(2)}
-              </p>
-              <p className="date">{tx.date}</p>
+      {showSend && (
+        <form onSubmit={handleSend} className="transfer-form pop-in">
+          <label>Destinataire (ID, Email ou Téléphone):</label>
+          <input
+            type="text"
+            value={recipient}
+            onChange={(e) => setRecipient(e.target.value)}
+            required
+          />
+
+          <label>Montant (€):</label>
+          <input
+            type="number"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            required
+          />
+
+          <label>Compte source:</label>
+          <select
+            value={selectedAccount}
+            onChange={(e) => setSelectedAccount(e.target.value)}
+            required
+          >
+            <option value="">Sélectionner</option>
+            {accounts.map(acc => (
+              <option key={acc._id} value={acc._id}>
+                {acc.name} — {acc.balance} €
+              </option>
+            ))}
+          </select>
+
+          <button className="submit-btn" type="submit">Envoyer</button>
+        </form>
+      )}
+
+      {showReceive && (
+        <div className="receive-panel pop-in">
+          <p><strong>ID :</strong> <span onClick={() => copyToClipboard(userId)}>{userId}</span></p>
+          <p><strong>Email :</strong> <span onClick={() => copyToClipboard(userEmail)}>{userEmail}</span></p>
+          <p><strong>Téléphone :</strong> <span onClick={() => copyToClipboard(userPhone)}>{userPhone}</span></p>
+
+          <label>Compte de réception :</label>
+          <select
+            value={receiveAccount}
+            onChange={(e) => setReceiveAccount(e.target.value)}
+          >
+            <option value="">Sélectionner</option>
+            {accounts.map(acc => (
+              <option key={acc._id} value={acc._id}>
+                {acc.name} — {acc.balance} €
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      <div className="transfer-history">
+        <h3>Historique des Transferts</h3>
+        {fakeHistory.map(tx => (
+          <div key={tx.id} className="history-item">
+            <div>{tx.label}</div>
+            <div className="history-meta">
+              <span className="amount">€{tx.amount.toFixed(2)}</span>
+              <span className="date">{tx.date}</span>
             </div>
-          ))
-        )}
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default Transactions;
+export default Transfers;

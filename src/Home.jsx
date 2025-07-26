@@ -3,8 +3,8 @@ import './Home.css';
 import { Link } from 'react-router-dom';
 import logo from './logo.png';
 
-import integrationImage from './integration.avif';
-import transferImage from './transfers.jpeg';
+import integrationImage from './integration.jpg';
+import transferImage from './transfers.jpg';
 import analysisImage from './analysis.jpg';
 import heroImage from './hero.jpeg';
 

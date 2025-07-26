@@ -68,3 +68,39 @@
 .quick-links button:hover {
   background-color: #2563eb;
 }
+.icon {
+  color: #3b82f6;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status.success {
+  background-color: #10b981;
+  color: white;
+}
+
+.status.danger {
+  background-color: #ef4444;
+  color: white;
+}
+
+.status.ok {
+  background-color: #3b82f6;
+  color: white;
+}

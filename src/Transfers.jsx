@@ -16,6 +16,12 @@ const Transfers = () => {
   const [selectedAccount, setSelectedAccount] = useState('');
   const [receiveAccount, setReceiveAccount] = useState('');
 
+  const fakeHistory = [
+    { id: 1, label: 'Envoyé à Jean Dupont', amount: 120.00, date: '2025-07-22' },
+    { id: 2, label: 'Reçu de Marie Lemoine', amount: 75.50, date: '2025-07-19' },
+    { id: 3, label: 'Envoyé à Banque Épargne', amount: 300.00, date: '2025-07-15' },
+  ];
+
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
@@ -59,13 +65,23 @@ const Transfers = () => {
       <h2 className="section-title">Transferts</h2>
 
       <div className="transfer-buttons">
-        <button onClick={() => { setShowSend(true); setShowReceive(false); }}>Envoyer</button>
-        <button onClick={() => { setShowReceive(true); setShowSend(false); }}>Recevoir</button>
+        <button
+          className={`toggle-btn ${showSend ? 'active' : ''}`}
+          onClick={() => { setShowSend(true); setShowReceive(false); }}
+        >
+          Envoyer
+        </button>
+        <button
+          className={`toggle-btn ${showReceive ? 'active' : ''}`}
+          onClick={() => { setShowReceive(true); setShowSend(false); }}
+        >
+          Recevoir
+        </button>
       </div>
 
       {showSend && (
         <form onSubmit={handleSend} className="transfer-form">
-          <label>Envoyer à (ID, Email ou Téléphone):</label>
+          <label>Destinataire (ID, Email ou Téléphone):</label>
           <input
             type="text"
             value={recipient}
@@ -95,7 +111,7 @@ const Transfers = () => {
             ))}
           </select>
 
-          <button type="submit">Envoyer</button>
+          <button className="submit-btn" type="submit">Envoyer</button>
         </form>
       )}
 
@@ -119,6 +135,20 @@ const Transfers = () => {
           </select>
         </div>
       )}
+
+      {/* Static Transaction History */}
+      <div className="transfer-history">
+        <h3>Historique des Transferts</h3>
+        {fakeHistory.map(tx => (
+          <div key={tx.id} className="history-item">
+            <div>{tx.label}</div>
+            <div className="history-meta">
+              <span className="amount">€{tx.amount.toFixed(2)}</span>
+              <span className="date">{tx.date}</span>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

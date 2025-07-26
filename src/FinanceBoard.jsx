@@ -3,6 +3,13 @@ import axios from 'axios';
 import {
   PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
+import {
+  CircleDollarSign,
+  PiggyBank,
+  TrendingDown,
+  BarChart3,
+  PlusCircle
+} from 'lucide-react';
 import './FinanceBoard.css';
 
 const FinanceBoard = () => {
@@ -58,13 +65,12 @@ const FinanceBoard = () => {
       setAmount('');
       setCategory('');
       setDate('');
-      fetchData(); // Refresh transactions
+      fetchData();
     } catch (err) {
       console.error(err);
     }
   };
 
-  // Group by category
   const categoryData = transactions.reduce((acc, tx) => {
     const cat = tx.category || 'Autre';
     acc[cat] = (acc[cat] || 0) + tx.amount;
@@ -72,16 +78,28 @@ const FinanceBoard = () => {
   }, {});
 
   const pieData = Object.entries(categoryData).map(([name, value]) => ({ name, value }));
-  const totalSpent = pieData.reduce((sum, entry) => sum + entry.value, 0);
+
+  // Fallback sample data if no transactions exist
+  const fallbackData = [
+    { name: 'Courses', value: 150 },
+    { name: 'Loyer', value: 600 },
+    { name: 'Transport', value: 80 },
+    { name: 'Autre', value: 100 },
+  ];
+
+  const chartData = pieData.length ? pieData : fallbackData;
+
+  const totalSpent = chartData.reduce((sum, entry) => sum + entry.value, 0);
   const remaining = budget - totalSpent;
 
   return (
     <div className="finance-section">
-      <h2 className="section-title">Tableau Financier</h2>
+      <h2 className="section-title">
+        <BarChart3 className="icon" /> Tableau Financier
+      </h2>
 
-      {/* Budget */}
       <form onSubmit={handleBudgetSubmit} className="form-grid">
-        <label>Budget mensuel (€):</label>
+        <label><PiggyBank className="icon" /> Budget mensuel (€):</label>
         <input
           type="number"
           value={inputBudget}
@@ -91,8 +109,10 @@ const FinanceBoard = () => {
         <button type="submit">Définir</button>
       </form>
 
-      {/* Add Transaction */}
-      <h3 className="sub-title">Ajouter une Transaction</h3>
+      <h3 className="sub-title">
+        <PlusCircle className="icon" /> Ajouter une Transaction
+      </h3>
+
       <form onSubmit={handleTransactionSubmit} className="form-grid">
         <input placeholder="Libellé" value={label} onChange={(e) => setLabel(e.target.value)} required />
         <input type="number" placeholder="Montant" value={amount} onChange={(e) => setAmount(e.target.value)} required />
@@ -101,26 +121,27 @@ const FinanceBoard = () => {
         <button type="submit">Ajouter</button>
       </form>
 
-      {/* Budget Summary */}
       <div className="budget-summary">
-        <p><strong>Total Dépensé :</strong> {totalSpent.toFixed(2)} €</p>
-        <p><strong>Budget Défini :</strong> {budget.toFixed(2)} €</p>
-        <p><strong>Reste :</strong> {remaining.toFixed(2)} €</p>
+        <p><CircleDollarSign className="icon" /> <strong>Total Dépensé :</strong> {totalSpent.toFixed(2)} €</p>
+        <p><PiggyBank className="icon" /> <strong>Budget Défini :</strong> {budget.toFixed(2)} €</p>
+        <p><TrendingDown className="icon" /> <strong>Reste :</strong> {remaining.toFixed(2)} €</p>
+        <span className={`status ${remaining < 0 ? 'danger' : 'ok'}`}>
+          {remaining < 0 ? 'Dépassement' : 'Sous budget'}
+        </span>
       </div>
 
-      {/* Chart */}
       <div className="chart-container">
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
             <Pie
-              data={pieData}
+              data={chartData}
               cx="50%"
               cy="50%"
               outerRadius={100}
               dataKey="value"
               label
             >
-              {pieData.map((entry, index) => (
+              {chartData.map((entry, index) => (
                 <Cell key={index} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>

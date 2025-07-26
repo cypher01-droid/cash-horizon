@@ -90,3 +90,12 @@
   color: white;
   font-size: 0.9rem;
 }
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: green;
+  margin-right: 12px;
+}
+

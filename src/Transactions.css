@@ -107,4 +107,46 @@
     color: #6b7280;
     font-style: italic;
   }
+  .transaction-card {
+    border-left: 4px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    transition: box-shadow 0.2s;
+  }
+  
+  .transaction-card:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .transaction-card.revenu {
+    border-left-color: #22c55e;
+  }
+  
+  .transaction-card.depense {
+    border-left-color: #ef4444;
+  }
+  
+  .tx-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .status-badge {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  
+  .status-badge.revenu {
+    background-color: #22c55e;
+  }
+  
+  .status-badge.dépense {
+    background-color: #ef4444;
+  }
   

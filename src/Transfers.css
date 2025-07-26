@@ -1,90 +1,121 @@
 .transfer-section {
-    padding: 2rem;
-    background-color: #f9fafb;
-    min-height: 100vh;
+  padding: 2rem;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.transfer-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.toggle-btn {
+  padding: 0.6rem 1.2rem;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.toggle-btn:hover {
+  background-color: #dbeafe;
+}
+
+.toggle-btn.active {
+  background-color: #2563eb;
+  color: white;
+}
+
+.transfer-form,
+.receive-panel {
+  display: grid;
+  gap: 1rem;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+.transfer-form input,
+.receive-panel select,
+.transfer-form select {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.submit-btn {
+  background-color: #10b981;
+  color: white;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #059669;
+}
+
+.receive-panel span {
+  cursor: pointer;
+  color: #2563eb;
+  font-weight: bold;
+}
+
+.receive-panel span:hover {
+  text-decoration: underline;
+}
+
+.transfer-history {
+  margin-top: 2rem;
+}
+
+.transfer-history h3 {
+  margin-bottom: 1rem;
+}
+
+.history-item {
+  background: #f9f9f9;
+  border-left: 4px solid #60a5fa;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+}
+
+.history-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  color: #555;
+}
+
+.amount {
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.pop-in {
+  animation: popIn 0.3s ease-in-out;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
   }
-  
-  .section-title {
-    font-size: 2rem;
-    color: #1f2937;
-    margin-bottom: 2rem;
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  .transfer-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .transfer-buttons button {
-    background-color: #3b82f6;
-    color: white;
-    padding: 0.7rem 1.2rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-  
-  .transfer-buttons button:hover {
-    background-color: #2563eb;
-  }
-  
-  .transfer-form,
-  .receive-panel {
-    display: grid;
-    gap: 1rem;
-    background: white;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
-    max-width: 600px;
-    margin-bottom: 2rem;
-  }
-  
-  .transfer-form label,
-  .receive-panel label {
-    font-weight: 600;
-    color: #374151;
-  }
-  
-  .transfer-form input,
-  .transfer-form select,
-  .receive-panel select {
-    padding: 0.6rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.5rem;
-    width: 100%;
-  }
-  
-  .transfer-form button {
-    background-color: #10b981;
-    color: white;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-  
-  .transfer-form button:hover {
-    background-color: #059669;
-  }
-  
-  .receive-panel p {
-    margin: 0.5rem 0;
-    color: #111827;
-  }
-  
-  .receive-panel span {
-    background-color: #f3f4f6;
-    padding: 0.3rem 0.6rem;
-    border-radius: 0.3rem;
-    cursor: pointer;
-    user-select: all;
-  }
-  
-  .receive-panel span:hover {
-    background-color: #e5e7eb;
-  }
-  
+}
